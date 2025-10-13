@@ -1,0 +1,328 @@
+:root{
+  --bg: #01257D;            /* fundo da página */
+  --surface: #ffffff;       /* cards / formulários / fieldset */
+  --form-bg: #01257D;
+  --input-bg: #0130a7;
+  --border: #e0e0e0;        /* bordas suaves */
+  --input-border: #cccccc;  /* borda dos inputs */
+  --primary: #0339c2;       /* cor principal (botões) */
+  --primary-contrast: #ffffff;
+  --text: #b9b9b9;          /* texto principal */
+  --muted: #6b6b6b;
+  --success: #0aa65a;
+  --danger: #d9534f;
+  --social-bg: #021c5e;
+  --social-gap: 18px;  /* espaçamento entre ícones sociais no rodapé */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  padding: 40px 20px;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  gap: 16px;
+}
+
+h1 { 
+    margin-bottom: 12px; 
+    text-align: center;
+}
+
+h2 { margin: 8px 0; }
+
+#seletor-tipo {
+  background: var(--form-bg);
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 6px;
+  max-width: 360px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#seletor-tipo label {
+  /* background: var(--form-bg); */
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  gap: 6px;
+}
+
+#tipo {
+  /* background: var(--form-bg); */
+  display: block;
+  max-width: 360px;
+  margin: 8px 0 16px 0;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+/* caixas de formulário */
+/* ...existing code... */
+.formulario {
+  background: var(--form-bg);
+  border: 1px solid var(--border);
+  padding: 14px;
+  border-radius: 6px;
+  max-width: 720px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 8px 0;
+  display: none; /* esconder por padrão */
+}
+
+/* mostra apenas quando tiver a classe active */
+.formulario.active {
+  display: block;
+}
+
+.formulario .obs {
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-top: -6px;
+    margin-bottom: 8px;
+}
+
+/* labels com texto à esquerda e inputs alinhados à direita em coluna fixa */
+.formulario label {
+  display: grid;
+  grid-template-columns: 1fr 220px; /* texto à esquerda / input à direita */
+  gap: 12px;
+  align-items: center;
+  margin: 8px 0;
+}
+
+/* inputs ocupam a coluna direita e ficam alinhados visualmente */
+.formulario input[type="number"],
+.formulario input[type="text"],
+.formulario select {
+  background: var(--input-bg);
+  color: var(--text);
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  text-align: right; /* números alinhados à direita */
+}
+
+/* botão e resultado */
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover { opacity: 0.95; }
+
+h3#resultadoBimestral, h3#resultadoProjeto {
+  margin-top: 12px;
+  color: var(--success);
+  font-weight: 600;
+}
+
+/* ...existing code... */
+
+/* estilo do rodapé */
+.rodape {
+  max-width: 720px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  color: var(--text);
+  padding: 10px 12px;
+  margin-top: 12px;
+  /* font-size: 0.9rem; */
+  border-radius: 6px;
+}
+
+.rodape .social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--social-gap);
+  margin-top: 8px;
+}
+
+.rodape .social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  text-decoration: none;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.12s ease;
+}
+
+.rodape .social a svg {
+  width: 20px;
+  height: 20px;
+  fill: #000;
+
+}
+
+.rodape .social a:hover {
+  background: var(--social-bg);
+  color: var(--primary-contrast);
+  transform: translateY(-2px);  
+
+/* responsivo: em telas pequenas os campos ficam empilhados */
+@media (max-width: 520px) {
+  .formulario label {
+    grid-template-columns: 1fr; /* empilha texto e input */
+  }
+  .formulario input[type="number"],
+  .formulario input[type="text"] {
+    text-align: left;
+  }
+}
+```// filepath: d:\Projetos\Python\github\calculadora_pi_univesp\home\css\styles.css
+body {
+  font-family: Arial, sans-serif;
+  color: #222;
+  padding: 40px 20px;
+  background: var(--bg);
+
+  /* centralizar todo o conteúdo vertical e horizontalmente */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  gap: 16px;
+}
+
+h1 { 
+    margin-bottom: 8px; 
+    text-align: center;
+}
+
+h2 { margin: 8px 0; }
+
+#seletor-tipo {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 12px 14px;
+  border-radius: 6px;
+
+  /* mesma largura que os formulários */
+  max-width: 720px;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* organizar os radios em linha e com espaçamento */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#seletor-tipo label {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  gap: 6px;
+}
+
+#tipo {
+  display: block;
+  max-width: 360px;
+  margin: 8px 0 16px 0;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* caixas de formulário */
+.formulario {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 14px;
+  border-radius: 6px;
+  max-width: 720px;
+  margin-bottom: 8px 0;
+  display: none;
+}
+
+/* labels com texto à esquerda e inputs alinhados à direita em coluna fixa */
+.formulario label {
+  display: grid;
+  grid-template-columns: 1fr 220px; /* texto à esquerda / input à direita */
+  gap: 12px;
+  align-items: center;
+  margin: 8px 0;
+}
+
+/* inputs ocupam a coluna direita e ficam alinhados visualmente */
+.formulario input[type="number"],
+.formulario input[type="text"],
+.formulario select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: right; /* números alinhados à direita */
+}
+
+/* botão e resultado */
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--primary);
+  background: var(--primary) !important;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover { opacity: 0.95; }
+
+h3#resultadoBimestral, h3#resultadoProjeto {
+  margin-top: 12px;
+  color: var(--success);
+  font-weight: 600;
+}
+
+/* responsivo: em telas pequenas os campos ficam empilhados */
+@media (max-width: 520px) {
+  .formulario label {
+    grid-template-columns: 1fr; /* empilha texto e input */
+  }
+  .formulario input[type="number"],
+  .formulario input[type="text"] {
+    text-align: left;
+  }
+
+  /* reduzir padding e garantir margens nas telas pequenas */
+  body { padding: 20px 12px; }
+  #seletor-tipo,
+  .formulario {
+    padding: 10px;
+  }
+}
+
+#seletor-tipo,
+.formulario {
+  background: var(--form-bg) !important;
+  border: 1px solid var(--border);
+}
+
+.formulario input[type="number"],
+.formulario input[type="text"],
+.formulario select {
+  background: var(--input-bg) !important;
+  color: var(--text);
+}
