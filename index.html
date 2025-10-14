@@ -12,9 +12,10 @@
 <body>
   <h1>Calculadora de Notas - UNIVESP</h1>
 
-  <fieldset id="seletor-tipo">
+  <fieldset id="seletor-tipo" class="responsive horizontal">
     <legend>Selecione o que deseja calcular:</legend>
     <label><input type="radio" name="tipo" value="bimestral"> Nota Bimestral</label>
+    <label><input type="radio" name="tipo" value="exame"> Nota Exame</label>
     <label><input type="radio" name="tipo" value="projeto"> Projeto Integrador</label>
   </fieldset>
 
@@ -44,6 +45,17 @@
     
     <button onclick="calcularNotaProjeto()">Calcular</button>
     <h3 id="resultadoProjeto"></h3>
+  </div>
+
+    <!-- Formulário Exame -->
+  <div id="formExame" class="formulario">
+    <h2>Notas do Projeto Integrador</h2>
+    <p>Insira a média obtida na prova regular + atividades semanais (utilize a primeira calculadora se necessário) e a nota do exame</p>
+    <label><strong>Atividades Semanais + Prova regular:</strong> <input type="number" step="0.1" id="atividades-prova"></label><br>
+    <label><strong>Nota do Exame:</strong><input type="number" step="0.1" id="exame"></label><br>
+    
+    <button onclick="calcularNotaExame()">Calcular</button>
+    <h3 id="resultadoExame"></h3>
   </div>
 
   <footer id="rodape" class="rodape" role="contentinfo">
