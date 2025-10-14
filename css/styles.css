@@ -13,6 +13,8 @@
   --danger: #d9534f;
   --social-bg: #021c5e;
   --social-gap: 18px;  /* espaçamento entre ícones sociais no rodapé */
+  --social-icon-size: 20px;
+  --bmc-scale: 1.7;
 }
 
 body {
@@ -168,11 +170,18 @@ h3#resultadoBimestral, h3#resultadoProjeto {
 }
 
 .rodape .social a svg {
-  width: 20px;
-  height: 20px;
+  width: var(--social-icon-size);
+  height: var(--social-icon-size);
   fill: #000;
-
+  background: transparent;
 }
+
+/* exclusivo pro BMC */
+.rodape .social a .bmc-icon {
+  width: calc(var(--social-icon-size) * var(--bmc-scale)) !important;
+  height: calc(var(--social-icon-size) * var(--bmc-scale)) important;
+}
+
 
 .rodape .social a:hover {
   background: var(--social-bg);
