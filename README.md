@@ -6,16 +6,24 @@ Este é um projeto pessoal com o objetivo de facilitar o cálculo de médias esc
 
 ## 📌 Funcionalidades
 
-- Inserção de notas por disciplina
-- Cálculo automático da média ponderada ou simples
-- Validação de entrada (notas entre 0 e 10)
-- Interface responsiva para dispositivos móveis
+- Cálculo das médias finais das disciplinas regulares
+- Cálculo da nota do Projeto Integrador respeitando os pesos de cada etapa do projeto
 
 ---
 
 ## 🚀 Como usar
 
 - Acesse a página: [https://joaoxfernando.github.io/calculadora_univesp/](https://joaoxfernando.github.io/calculadora_univesp/)
+
+---
+
+## 🧱 Funcionalidades futuras
+
+- [ ] Adicionar cálculo da média das notas como exames
+- [ ] Adicionar função para calcular de nota necessária para passar
+
+
+---
 
 ## 🧪 Sugestões de alterações (via Fork)
 
