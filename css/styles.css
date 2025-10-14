@@ -194,7 +194,7 @@ button {
 
 button:hover { opacity: 0.95; }
 
-h3#resultadoBimestral, h3#resultadoProjeto {
+h3#resultadoBimestral, h3#resultadoProjeto, h3#resultadoExame {
   margin-top: 12px;
   color: var(--success);
   font-weight: 600;
