@@ -38,23 +38,80 @@ h1 {
 
 h2 { margin: 8px 0; }
 
-#seletor-tipo {
+/* #seletor-tipo {
   background: var(--form-bg);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
   border: 1px solid var(--border);
   padding: 14px;
   border-radius: 6px;
-  max-width: 360px;
+  max-width: 720px;
   width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+} */
+
+#seletor-tipo,
+.formulario {
+  max-width: 720px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 6px;
+  margin: 0 auto 12px;
+  padding: 14px;
+}
+
+
+#seletor-tipo {
+  position: relative;
+  background: var(--form-bg);
+  border: 1px solid var(--border);
+  overflow: visible;
+  padding-top: 22px;
+  display: flex;
+  flex-wrap: wrap;           /* permite quebra se não couber em linha */
+  justify-content: center;   /* centraliza horizontalmente */
+  align-items: center;       /* centraliza verticalmente */
+  gap: 12px;
+  padding: 18px 14px 14px;   /* topo maior para dar espaço ao legend */
   box-sizing: border-box;
 }
 
+
+#seletor-tipo legend {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--form-bg);
+  padding: 0 10px;
+  z-index: 10;
+  color: var(--text);
+  font-weight: 600;
+  white-space: nowrap;
+  line-height: 1;
+  pointer-events: none;
+}
+
 #seletor-tipo label {
-  /* background: var(--form-bg); */
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  gap: 8px;
   margin: 0;
-  gap: 6px;
+  text-align: center;
 }
+
+
+#seletor-tipo.horizontal label {
+  flex: 0 0 auto;              /* não expandir, manter tamanho do conteúdo */
+  width: auto;                 /* garantir que não vire 100% */
+  white-space: nowrap;         /* impedir quebra interna */
+}
+
 
 #tipo {
   /* background: var(--form-bg); */
@@ -115,6 +172,11 @@ h2 { margin: 8px 0; }
   text-align: right; /* números alinhados à direita */
 }
 
+.formulario button {
+  display: block;
+  margin: 12px auto 0;
+}
+
 /* botão e resultado */
 button {
   margin-top: 10px;
@@ -124,7 +186,11 @@ button {
   background: var(--primary);
   color: var(--text);
   cursor: pointer;
+  min-width: 140px;
+  height: 50px;
 }
+
+
 button:hover { opacity: 0.95; }
 
 h3#resultadoBimestral, h3#resultadoProjeto {
@@ -187,122 +253,6 @@ h3#resultadoBimestral, h3#resultadoProjeto {
   background: var(--social-bg);
   color: var(--primary-contrast);
   transform: translateY(-2px);  
-
-/* responsivo: em telas pequenas os campos ficam empilhados */
-@media (max-width: 520px) {
-  .formulario label {
-    grid-template-columns: 1fr; /* empilha texto e input */
-  }
-  .formulario input[type="number"],
-  .formulario input[type="text"] {
-    text-align: left;
-  }
-}
-```// filepath: d:\Projetos\Python\github\calculadora_pi_univesp\home\css\styles.css
-body {
-  font-family: Arial, sans-serif;
-  color: #222;
-  padding: 40px 20px;
-  background: var(--bg);
-
-  /* centralizar todo o conteúdo vertical e horizontalmente */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 100vh;
-  box-sizing: border-box;
-  gap: 16px;
-}
-
-h1 { 
-    margin-bottom: 8px; 
-    text-align: center;
-}
-
-h2 { margin: 8px 0; }
-
-#seletor-tipo {
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  padding: 12px 14px;
-  border-radius: 6px;
-
-  /* mesma largura que os formulários */
-  max-width: 720px;
-  width: 100%;
-  box-sizing: border-box;
-
-  /* organizar os radios em linha e com espaçamento */
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-#seletor-tipo label {
-  display: inline-flex;
-  align-items: center;
-  margin: 0;
-  gap: 6px;
-}
-
-#tipo {
-  display: block;
-  max-width: 360px;
-  margin: 8px 0 16px 0;
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-/* caixas de formulário */
-.formulario {
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  padding: 14px;
-  border-radius: 6px;
-  max-width: 720px;
-  margin-bottom: 8px 0;
-  display: none;
-}
-
-/* labels com texto à esquerda e inputs alinhados à direita em coluna fixa */
-.formulario label {
-  display: grid;
-  grid-template-columns: 1fr 220px; /* texto à esquerda / input à direita */
-  gap: 12px;
-  align-items: center;
-  margin: 8px 0;
-}
-
-/* inputs ocupam a coluna direita e ficam alinhados visualmente */
-.formulario input[type="number"],
-.formulario input[type="text"],
-.formulario select {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  text-align: right; /* números alinhados à direita */
-}
-
-/* botão e resultado */
-button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  border-radius: 4px;
-  border: 1px solid var(--primary);
-  background: var(--primary) !important;
-  color: #fff;
-  cursor: pointer;
-}
-button:hover { opacity: 0.95; }
-
-h3#resultadoBimestral, h3#resultadoProjeto {
-  margin-top: 12px;
-  color: var(--success);
-  font-weight: 600;
 }
 
 /* responsivo: em telas pequenas os campos ficam empilhados */
@@ -321,17 +271,24 @@ h3#resultadoBimestral, h3#resultadoProjeto {
   .formulario {
     padding: 10px;
   }
-}
 
-#seletor-tipo,
-.formulario {
-  background: var(--form-bg) !important;
-  border: 1px solid var(--border);
-}
 
-.formulario input[type="number"],
-.formulario input[type="text"],
-.formulario select {
-  background: var(--input-bg) !important;
-  color: var(--text);
+  #seletor-tipo,
+  .formulario {
+    background: var(--form-bg) !important;
+    border: 1px solid var(--border);
+  }
+
+  #seletor-tipo.responsive {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .formulario input[type="number"],
+  .formulario input[type="text"],
+  .formulario select {
+    background: var(--input-bg) !important;
+    color: var(--text);
+  }
 }
