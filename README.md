@@ -8,6 +8,7 @@ Este é um projeto pessoal com o objetivo de facilitar o cálculo de médias esc
 
 - Cálculo das médias finais das disciplinas regulares
 - Cálculo da nota do Projeto Integrador respeitando os pesos de cada etapa do projeto
+- Cálculo da média após realização do exame
 
 ---
 
