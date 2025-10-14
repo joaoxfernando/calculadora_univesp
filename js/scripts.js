@@ -23,8 +23,11 @@ function calcularNotaBimestral() {
     const atividades = parseFloat(document.getElementById('atividades').value);
     const prova = parseFloat(document.getElementById('prova').value);
 
-    if (isNaN(atividades) || isNaN(prova)) {
+    if (isNaN(atividades) || isNaN(prova) ) {
     document.getElementById('resultadoBimestral').innerText = "Preencha todos os campos corretamente.";
+    return;
+    } else if (atividades < 0 || atividades > 10 || prova < 0 || prova > 10) {
+    document.getElementById('resultadoBimestral').innerText = "Atenção: as notas devem estar entre 0 e 10.";
     return;
     }
 
@@ -51,14 +54,17 @@ function calcularNotaProjeto() {
     if (isNaN(planoAcao) || isNaN(relatorioParcial) || isNaN(relatorioFinal) || isNaN(video)) {
     document.getElementById('resultadoProjeto').innerText = "Preencha todos os campos corretamente.";
     return;
+    } else if (planoAcao < 0 || planoAcao > 10 || relatorioParcial < 0 || relatorioParcial > 10 || relatorioFinal < 0 || relatorioFinal > 10 || video < 0 || video > 10) {
+    document.getElementById('resultadoProjeto').innerText = "Atenção: as notas devem estar entre 0 e 10.";
+    return;
     }
 
     const notaFinal = (planoAcao * 0.15) + (relatorioParcial * 0.25) + (relatorioFinal * 0.35) + (video * 0.1);
     const status = notaFinal >= 5 ? "Aprovado ✅" : "Reprovado ❌";
 
-    gtag('event', 'countClicksBimestral', {
+    gtag('event', 'countClicksProjeto', {
       'event_category': 'interacao',
-      'event_label': 'Cliques botão Calcular Nota Bimestral',
+      'event_label': 'Cliques botão Calcular Nota Projeto Integrador',
       'value': 1
     });
 
