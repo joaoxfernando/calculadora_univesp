@@ -31,6 +31,12 @@ function calcularNotaBimestral() {
     const notaFinal = (atividades * 0.4) + (prova * 0.6);
     const status = notaFinal >= 5 ? "Aprovado ✅" : "Reprovado ❌";
 
+    gtag('event', 'countClicksBimestral', {
+      'event_category': 'interacao',
+      'event_label': 'Cliques botão Calcular Nota Bimestral',
+      'value': 1
+    });
+
     document.getElementById('resultadoBimestral').innerText = `Média final: ${notaFinal.toFixed(2)} - ${status}`;
 }
 
@@ -49,6 +55,12 @@ function calcularNotaProjeto() {
 
     const notaFinal = (planoAcao * 0.15) + (relatorioParcial * 0.25) + (relatorioFinal * 0.35) + (video * 0.1);
     const status = notaFinal >= 5 ? "Aprovado ✅" : "Reprovado ❌";
+
+    gtag('event', 'countClicksBimestral', {
+      'event_category': 'interacao',
+      'event_label': 'Cliques botão Calcular Nota Bimestral',
+      'value': 1
+    });
 
     document.getElementById('resultadoProjeto').innerText = `Nota final: ${notaFinal.toFixed(2)} - ${status}`;
 }
