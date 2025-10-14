@@ -1,7 +1,7 @@
 function mostrarFormulario() {
   const checked = document.querySelector('input[name="tipo"]:checked');
   const valor = checked ? checked.value : '';
-  const map = { bimestral: 'formBimestral', projeto: 'formProjeto' };
+  const map = { bimestral: 'formBimestral', exame: 'formExame', projeto: 'formProjeto' };
 
   document.querySelectorAll('.formulario').forEach(el => el.classList.remove('active'));
 
@@ -70,6 +70,36 @@ function calcularNotaProjeto() {
 
     document.getElementById('resultadoProjeto').innerText = `Nota final: ${notaFinal.toFixed(2)} - ${status}`;
 }
+
+function calcularNotaExame() {
+//  A pontuação do exame varia de 0 (zero) a 10 (dez). Para calcular a média final após a prova de exame, 
+// soma-se a nota de exame à média obtida anteriormente (Média final na disciplina no bimestre, composta pela prova regular e atividades realizadas no AVA); 
+// esse total é dividido por dois e o resultado será a média final do aluno na respectiva disciplina, após exame.
+
+    const mediaNota = parseFloat(document.getElementById('atividades-prova').value);
+    const notaExame = parseFloat(document.getElementById('exame').value);
+
+    if (isNaN(mediaNota) || isNaN(notaExame)) {
+    document.getElementById('resultadoExame').innerText = "Preencha todos os campos corretamente."; // alterar ID após inserir formulário no HTML.
+    return;
+    } else if (mediaNota < 0 || mediaNota > 10 || notaExame < 0 || notaExame > 10) {
+    document.getElementById('resultadoExame').innerText = "Atenção: as notas devem estar entre 0 e 10."; // alterar ID após inserir formulário no HTML.
+    return;
+    }
+
+    const notaFinal = (mediaNota + notaExame) / 2;
+    const status = notaFinal >= 5 ? "Aprovado ✅" : "Reprovado ❌";
+
+    gtag('event', 'countClicksExame', {
+      'event_category': 'interacao',
+      'event_label': 'Cliques botão Calcular Nota do Exame',
+      'value': 1
+      });
+
+
+    document.getElementById('resultadoExame').innerText = `Média final após exame: ${notaFinal.toFixed(2)} - ${status}`; // alterar ID após inserir formulário no HTML.
+
+  }
 
 // Obtendo o ano atual para inserir no rodapé
 document.addEventListener('DOMContentLoaded', () => {
