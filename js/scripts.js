@@ -1,7 +1,7 @@
 function mostrarFormulario() {
   const checked = document.querySelector('input[name="tipo"]:checked');
   const valor = checked ? checked.value : '';
-  const map = { bimestral: 'formBimestral', exame: 'formExame', projeto: 'formProjeto' };
+  const map = { bimestral: 'formBimestral', exame: 'formExame', projeto: 'formProjeto', exigida: 'formNotaExigida' };
 
   document.querySelectorAll('.formulario').forEach(el => el.classList.remove('active'));
 
@@ -9,6 +9,10 @@ function mostrarFormulario() {
     const el = document.getElementById(map[valor]);
     if (el) el.classList.add('active');
   }
+}
+
+function arredondarMeioPonto(numero) {
+  return Math.round(numero * 2) / 2;
 }
 
 // escuta mudanças nos radios e define estado inicial
@@ -24,23 +28,26 @@ function calcularNotaBimestral() {
     const prova = parseFloat(document.getElementById('prova').value);
 
     if (isNaN(atividades) || isNaN(prova) ) {
-    document.getElementById('resultadoBimestral').innerText = "Preencha todos os campos corretamente.";
+    document.getElementById('resultadoBimestral').innerHTML = '<span style="color: #ff3232d2">Preencha todos os campos corretamente.</span>';
     return;
     } else if (atividades < 0 || atividades > 10 || prova < 0 || prova > 10) {
-    document.getElementById('resultadoBimestral').innerText = "Atenção: as notas devem estar entre 0 e 10.";
+    document.getElementById('resultadoBimestral').innerHTML = '<span style="color: #ff3232d2">Atenção: as notas devem estar entre 0 e 10.</span>';
     return;
     }
 
+    
     const notaFinal = (atividades * 0.4) + (prova * 0.6);
-    const status = notaFinal >= 5 ? "Aprovado ✅" : "Reprovado ❌";
+    const aprovado = notaFinal >= 5;
+    const corAprovado = aprovado ? '#4caf50' : '#ff3232d2';
+    const status = aprovado ? 'Aprovado ✅' : 'Reprovado ❌';
+
+    document.getElementById('resultadoBimestral').innerHTML = `<span style="color: ${corAprovado};">Média final: ${notaFinal.toFixed(2)} - ${status}</span>`;
 
     gtag('event', 'countClicksBimestral', {
       'event_category': 'interacao',
       'event_label': 'Cliques botão Calcular Nota Bimestral',
       'value': 1
     });
-
-    document.getElementById('resultadoBimestral').innerText = `Média final: ${notaFinal.toFixed(2)} - ${status}`;
 }
 
 function calcularNotaProjeto() {
@@ -52,15 +59,17 @@ function calcularNotaProjeto() {
 
 
     if (isNaN(planoAcao) || isNaN(relatorioParcial) || isNaN(relatorioFinal) || isNaN(video)) {
-    document.getElementById('resultadoProjeto').innerText = "Preencha todos os campos corretamente.";
+    document.getElementById('resultadoProjeto').innerHTML = '<span style="color: #ff3232d2">Preencha todos os campos corretamente.';
     return;
     } else if (planoAcao < 0 || planoAcao > 10 || relatorioParcial < 0 || relatorioParcial > 10 || relatorioFinal < 0 || relatorioFinal > 10 || video < 0 || video > 10) {
-    document.getElementById('resultadoProjeto').innerText = "Atenção: as notas devem estar entre 0 e 10.";
+    document.getElementById('resultadoProjeto').innerHTML = '<span style="color: #ff3232d2">Atenção: as notas devem estar entre 0 e 10.';
     return;
     }
 
     const notaFinal = (planoAcao * 0.15) + (relatorioParcial * 0.25) + (relatorioFinal * 0.35) + (video * 0.1);
-    const status = notaFinal >= 5 ? "Aprovado ✅" : "Reprovado ❌";
+    const aprovado = notaFinal >= 5;
+    const corAprovado = aprovado ? '#4caf50' : '#ff3232d2';
+    const status = aprovado ? 'Aprovado ✅' : 'Reprovado ❌';
 
     gtag('event', 'countClicksProjeto', {
       'event_category': 'interacao',
@@ -68,38 +77,66 @@ function calcularNotaProjeto() {
       'value': 1
     });
 
-    document.getElementById('resultadoProjeto').innerText = `Nota final: ${notaFinal.toFixed(2)} - ${status}`;
+    document.getElementById('resultadoProjeto').innerHTML = `<span style="color: ${corAprovado};">Nota final: ${notaFinal.toFixed(2)} - ${status}</span>`;
 }
 
 function calcularNotaExame() {
-//  A pontuação do exame varia de 0 (zero) a 10 (dez). Para calcular a média final após a prova de exame, 
-// soma-se a nota de exame à média obtida anteriormente (Média final na disciplina no bimestre, composta pela prova regular e atividades realizadas no AVA); 
-// esse total é dividido por dois e o resultado será a média final do aluno na respectiva disciplina, após exame.
 
     const mediaNota = parseFloat(document.getElementById('atividades-prova').value);
     const notaExame = parseFloat(document.getElementById('exame').value);
 
     if (isNaN(mediaNota) || isNaN(notaExame)) {
-    document.getElementById('resultadoExame').innerText = "Preencha todos os campos corretamente."; // alterar ID após inserir formulário no HTML.
+    document.getElementById('resultadoExame').innerHTML = '<span style="color: #ff3232d2">Preencha todos os campos corretamente.';
     return;
     } else if (mediaNota < 0 || mediaNota > 10 || notaExame < 0 || notaExame > 10) {
-    document.getElementById('resultadoExame').innerText = "Atenção: as notas devem estar entre 0 e 10."; // alterar ID após inserir formulário no HTML.
+    document.getElementById('resultadoExame').innerHTML = '<span style="color: #ff3232d2">Atenção: as notas devem estar entre 0 e 10.'; 
     return;
     }
 
     const notaFinal = (mediaNota + notaExame) / 2;
-    const status = notaFinal >= 5 ? "Aprovado ✅" : "Reprovado ❌";
+    const aprovado = notaFinal >= 5;
+    const corAprovado = aprovado ? '#4caf50' : '#ff3232d2';
+    const status = aprovado ? 'Aprovado ✅' : 'Reprovado ❌';
 
+    document.getElementById('resultadoExame').innerHTML = `<span style="color: ${corAprovado};">Média final após exame: ${notaFinal.toFixed(2)} - ${status}</span>`;
+    
     gtag('event', 'countClicksExame', {
       'event_category': 'interacao',
       'event_label': 'Cliques botão Calcular Nota do Exame',
       'value': 1
       });
+  }
 
+function calcularNotaExigida() {
+    const mediaNota = parseFloat(document.getElementById('atividades-semanais').value);
 
-    document.getElementById('resultadoExame').innerText = `Média final após exame: ${notaFinal.toFixed(2)} - ${status}`; // alterar ID após inserir formulário no HTML.
+    if (isNaN(mediaNota)) {
+    document.getElementById('resultadoNotaExigida').innerHTML = '<span style="color: #ff3232d2">Preencha todos os campos corretamente.'; 
+    return;
+    } else if (mediaNota < 0 || mediaNota > 10) {
+    document.getElementById('resultadoNotaExigida').innerHTML = '<span style="color: #ff3232d2">Atenção: as notas devem estar entre 0 e 10.';
+    return;
+    }
+
+    const mediaAprovacao = 5;
+    const notaNecessaria = (mediaAprovacao-(mediaNota*0.4))/0.6;
+    const corTexto = '#7b9cffff'
+
+    const status = 
+    `<span style="color: ${corTexto};">Você precisa tirar pelo menos</span> <span style="color:#4caf50;">` 
+    + arredondarMeioPonto(notaNecessaria.toFixed(2)) 
+    + `</span><span style="color: ${corTexto};"> pontos na prova regular para ser aprovado.</span>`;
+
+    gtag('event', 'countClicksNotaNecessaria', {
+      'event_category': 'interacao',
+      'event_label': 'Cliques botão Calcular Nota Necessária para passar',
+      'value': 1
+      });
+
+    document.getElementById('resultadoNotaExigida').innerHTML = `${status}`; 
 
   }
+
 
 // Obtendo o ano atual para inserir no rodapé
 document.addEventListener('DOMContentLoaded', () => {
