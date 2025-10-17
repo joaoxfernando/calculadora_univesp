@@ -21,7 +21,7 @@ Este é um projeto pessoal com o objetivo de facilitar o cálculo de médias esc
 ## 🧱 Funcionalidades futuras
 
 - [X] Adicionar cálculo da média das notas como exames
-- [ ] Adicionar função para calcular a nota necessária para passar na disciplina
+- [X] Adicionar função para calcular a nota necessária para passar na disciplina
 
 ---
 
