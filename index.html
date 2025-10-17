@@ -14,10 +14,12 @@
   <h1>Calculadora de Notas - UNIVESP</h1>
 
   <fieldset id="seletor-tipo" class="responsive horizontal">
-    <legend>Selecione o que deseja calcular:</legend>
-    <label><input type="radio" name="tipo" value="bimestral"> Nota Bimestral</label>
-    <label><input type="radio" name="tipo" value="exame"> Nota Exame</label>
-    <label><input type="radio" name="tipo" value="projeto"> Projeto Integrador</label>
+    <legend>Selecione qual a nota que deseja calcular:</legend>
+    <label><input type="radio" name="tipo" value="bimestral">Bimestral</label>
+    <label><input type="radio" name="tipo" value="exame">Exame</label>
+    <label><input type="radio" name="tipo" value="projeto">Projeto Integrador</label>
+    <label><input type="radio" name="tipo" value="exigida">Necessária para Aprovação</label>
+  
   </fieldset>
 
   <!-- Formulário Bimestral -->
@@ -59,6 +61,16 @@
     <h3 id="resultadoExame"></h3>
   </div>
 
+      <!-- Formulário Exame -->
+  <div id="formNotaExigida" class="formulario">
+    <h2>Calcular a nota necessária na prova regular</h2>
+    <p>Insira a média obtida nas atividades semanais</p>
+    <label><strong>Atividades Semanais:</strong> <input type="number" step="0.1" id="atividades-semanais"></label><br>
+    
+    <button onclick="calcularNotaExigida()">Calcular</button>
+    <h3 id="resultadoNotaExigida"></h3>
+  </div>
+
   <footer id="rodape" class="rodape" role="contentinfo">
     <div class="social" aria-label="Social Networks">
       <a href="https://github.com/joaoxfernando" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -91,10 +103,6 @@
               fill="currentColor"/>
       </svg>
       </a>
-
-
-
-
     </div>
 
     <small>© <span id="anoAtual"></span> — Calculadora de Notas • Desenvolvido por João Fernando</small>
