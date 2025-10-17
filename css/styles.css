@@ -9,8 +9,9 @@
   --primary-contrast: #ffffff;
   --text: #b9b9b9;          /* texto principal */
   --muted: #6b6b6b;
-  --success: #0aa65a;
-  --danger: #d9534f;
+  --success: #867d7d;
+  --succcess-nota: #4caf50;
+  --danger: #784fd9;
   --social-bg: #021c5e;
   --social-gap: 18px;  /* espaçamento entre ícones sociais no rodapé */
   --social-icon-size: 20px;
@@ -194,7 +195,7 @@ button {
 
 button:hover { opacity: 0.95; }
 
-h3#resultadoBimestral, h3#resultadoProjeto, h3#resultadoExame {
+h3#resultadoBimestral, h3#resultadoProjeto, h3#resultadoExame, h3#resultadoNotaExigida {
   margin-top: 12px;
   color: var(--success);
   font-weight: 600;
